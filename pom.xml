@@ -4,4 +4,12 @@
   <artifactId>MovieRecommender</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>MovieRecommender</name>
+  
+  	<dependencies>
+		<dependency>
+			<groupId>org.apache.mahout</groupId>
+			<artifactId>mahout-core</artifactId>
+			<version>0.9</version>
+		</dependency>
+	</dependencies>
 </project>
