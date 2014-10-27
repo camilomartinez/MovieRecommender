@@ -12,7 +12,6 @@ import org.apache.mahout.common.RandomUtils;
 public class EvaluateRecommender {
 
 	public static void main(String[] args) throws Exception {
-		
 		// Reproducible results
 		RandomUtils.useTestSeed();
 		DataModel model = new FileDataModel(new File("data/train.csv"));
