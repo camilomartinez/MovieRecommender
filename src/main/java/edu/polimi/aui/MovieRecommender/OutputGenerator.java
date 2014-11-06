@@ -17,15 +17,13 @@ import org.apache.mahout.cf.taste.recommender.Recommender;
 
 public class OutputGenerator {
 
-	private static String trainFile = "data/shortTrain.csv";
-	private static String testFile = "data/shortTest.csv";
+	private static String trainFile = "data/train.csv";
+	private static String testFile = "data/test.csv";
 	private static String outputFile = "data/submission.csv";
-	private static int numberOfRecommendations = 5;
+	private static int numberOfRecommendations = 5;	
 	
 	public static void main(String[] args) throws IOException, TasteException {
-    	DataModel model = createModel(trainFile);
-    	RecommenderBuilder builder = new UserBasedRecommender();
-    	Recommender recommender = builder.buildRecommender(model);
+    	Recommender recommender = buildRecommender();
     	
     	BufferedWriter bw = new BufferedWriter(new FileWriter(outputFile));
     	bw.write("UserId,RecommendedMovieIds");
@@ -56,6 +54,16 @@ public class OutputGenerator {
 		
 		br.close();
     	bw.close();
+	}
+	
+	private static Recommender buildRecommender() throws IOException, TasteException {
+		DataModel model = createModel(trainFile);
+    	RecommenderBuilder builder = getChosenRecommender();
+    	return builder.buildRecommender(model);
+	}
+	
+	private static RecommenderBuilder getChosenRecommender() {
+		return new MatrixFactorizationRecommender();
 	}
 	
 	private static DataModel  createModel(String sourceFile) throws IOException {

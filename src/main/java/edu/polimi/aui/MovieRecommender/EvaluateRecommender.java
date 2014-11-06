@@ -23,6 +23,11 @@ public class EvaluateRecommender {
 		// useful for a big data set.
 		double percentageOfDataToEvaluate = 0.001; //0.1% 811 out of 811k 		
 		double result = evaluator.evaluate(builder, null, model, percentageForTraining, percentageOfDataToEvaluate);
+		System.out.print("RMSE for UserBased:");
+		System.out.println(result);
+		builder = new MatrixFactorizationRecommender();
+		result = evaluator.evaluate(builder, null, model, percentageForTraining, percentageOfDataToEvaluate);
+		System.out.print("RMSE for MatrixFactorization:");
 		System.out.println(result);
 	}
 }
